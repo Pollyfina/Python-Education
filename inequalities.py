@@ -1,4 +1,5 @@
 from math import sqrt
+from Understand import understand
 
 #∈ - знак принадлежности
 #∞ - знак бесконечности
@@ -14,9 +15,9 @@ def inequalities():
     b.strip()
     c.strip()
     try:
-      a = int(a)
-      b = int(b)
-      c = int(c)
+        a = int(a)
+        b = int(b)
+        c = int(c)
     except ValueError:
         print('Вы ввели не число')
     else:
@@ -74,7 +75,6 @@ def inequalities():
                 elif a < 0:
                     print('Уравнение < 0 если x ∈ ℝ')
                     print('Уравнение > 0 если x ∈ Ø')
-
         elif c == 0 and a != 0 and b != 0:
             D = b**2-4*a*c
             if D < 0:
@@ -138,16 +138,9 @@ def inequalities():
 
 
 while True:
-    want = input('Хотите ли вы решать квадратные неравенства? ')
-    want = want.lower().strip()
-    #want = want.strip()
-    if want == 'да' or want == 'хочу':
+    phrase = input('Хотите ли вы решать квадратные неравенства? ')
+    want = understand(phrase)
+    if want:
         inequalities()
-    elif want == 'нет' or want == 'не хочу':
-        break
     else:
-        print('Я вас не понимаю :-(')
-
-
-# Добавить случай, когда a != 0 and b = 0 and c != 0
-# Сделать так: если а = 0: ...
+        break
