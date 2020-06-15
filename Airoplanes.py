@@ -30,6 +30,7 @@ class Planes(object):
             x = another_plane.x - self.x
             y = another_plane.y - self.y
             distance = sqrt(x^2 + y^2)
+        return distance
 
 
 def making_planes(number_of_planes=100):
@@ -47,9 +48,9 @@ def find_the_nearest_plane():
     for another_plane in list_of_planes:
         the_plane.calculate_distance(another_plane)
         dict_of_distance[another_plane] = the_plane.calculate_distance(another_plane)
-    return min(dict_of_distance)
+    key_min = min(dict_of_distance.keys(), key=(lambda k: dict_of_distance[k]))
+    return key_min
     
 
 making_planes(10)
-print(list_of_planes)
 print(find_the_nearest_plane())
