@@ -1,11 +1,10 @@
 '''
 This is the first doctest.
-
->>> inequalities(-1,3,-2)
-Уравнение < 0 если x ∈ (-∞;1)U(2;+∞)
-Уравнение = 0 если x = 1 или x = 2
-Уравнение > 0 если x ∈ (1;2)
+>>> inequalities(1,1,1)
+Уравнение < 0 если x ∈ Ø
+Уравнение > 0 если x ∈ ℝ
 '''
+
 
 from math import sqrt
 from Understand import understand
