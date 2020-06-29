@@ -3,11 +3,21 @@ This is the first doctest.
 >>> inequalities(1,1,1)
 Уравнение < 0 если x ∈ Ø
 Уравнение > 0 если x ∈ ℝ
+>>> inequalities(1,-10,24)
+Уравнение < 0 если x ∈ (4.0;6.0)
+Уравнение = 0 если x = 4.0 или x = 6.0
+Уравнение > 0 если x ∈ (-∞;4.0)U(6.0;+∞)
+>>> inequalities(-3,-4,7)
+Уравнение < 0 если x ∈ (-∞;-2.3333333333333335)U(-1.0;+∞)
+Уравнение = 0 если x = -2.3333333333333335 или x = -1.0
+Уравнение > 0 если x ∈ (-2.3333333333333335;-1.0)
+>>> inequalities(0,0,0)
+Это не уравнение
 '''
 
 
 from math import sqrt
-from Understand import understand
+
 
 def inequalities(a,b,c):
     try:
@@ -108,8 +118,8 @@ def inequalities(a,b,c):
                         print('Уравнение < 0 если x ∈ ({0};{1})'.format(x1,x2))
                         print('Уравнение = 0 если x = {0} или x = {1}'.format(x1, x2))
                         print('Уравнение > 0 если x ∈ (-∞;{0})U({1};+∞)'.format(x1, x2))
-                    elif a < 0:
-                        print('Уравнение < 0 если x ∈ (-∞;{0})U({1};+∞)'.format(x1, x2))#
+                    elif a < 0:#this part doesn't works for some reasons
+                        print('Уравнение < 0 если x ∈ (-∞;{0})U({1};+∞)'.format(x1, x2))
                         print('Уравнение = 0 если x = {0} или x = {1}'.format(x1, x2))
                         print('Уравнение > 0 если x ∈ ({0};{1})'.format(x1,x2))
             elif D == 0:
