@@ -1,12 +1,6 @@
 from math import sqrt
 from Understand import understand
 
-#∈ - знак принадлежности
-#∞ - знак бесконечности
-#∪ - знак объединения
-#Ø - знак пустого множества
-#ℝ - множество рациональных чисел
-
 def inequalities():
     a = input('Введите а ')
     b = input('Введите b ')
@@ -107,6 +101,14 @@ def inequalities():
                 if x1 > x2:
                     x1 = (-b+d)/(2*a)
                     x2 = (-b-d)/(2*a)
+                    if a > 0:
+                        print('Уравнение < 0 если x ∈ ({0};{1})'.format(x1,x2))
+                        print('Уравнение = 0 если x = {0} или x = {1}'.format(x1, x2))
+                        print('Уравнение > 0 если x ∈ (-∞;{0})U({1};+∞)'.format(x1, x2))
+                    elif a < 0:
+                        print('Уравнение < 0 если x ∈ (-∞;{0})U({1};+∞)'.format(x1, x2))
+                        print('Уравнение = 0 если x = {0} или x = {1}'.format(x1, x2))
+                        print('Уравнение > 0 если x ∈ ({0};{1})'.format(x1,x2))
                 else:
                     if a > 0:
                         print('Уравнение < 0 если x ∈ ({0};{1})'.format(x1,x2))
