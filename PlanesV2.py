@@ -2,33 +2,40 @@ from random import randint
 from random import choice
 from math import sin
 from math import radians
+from tkinter import *
+
+
+tk = Tk()
+map_of_planes = Canvas(tk, width=500, height=500)
+map_of_planes.pack()
+
 
 
 airlines = ['S7', 'Air Baltic', 'Aeroflot', 'Delta airlines']
 list_of_planes = list()
+colors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'magenta', 'pink', 'lime']
 
 
 class Planes(object):
-    def __init__(self, x, y, company, speed, direction):
+    def __init__(self, x, y, company, speed, direction, color):
         self.x = x
         self.y = y
         self.company = company
         self.speed = speed
         self.direction = direction
-    def __del__(self):#уточнить эту функцию
-        pass    
+        self.color = color 
     def find_angle(self):
-        if direction >= 1 and direction <= 90:
-            z = 90 - direction
+        if self.direction >= 1 and self.direction <= 90:
+            z = 90 - self.direction
             w = 90 - z
-        elif direction > 90 and direction <= 180:
-            w = 180 - direction
+        elif self.direction > 90 and self.direction <= 180:
+            w = 180 - self.direction
             z = 90 - w
-        elif direction > 180 and direction <=270:
-            z = 270 - direction
+        elif self.direction > 180 and self.direction <=270:
+            z = 270 - self.direction
             w = 90 - z
         else:
-            w = 360 - direction
+            w = 360 - self.direction
             z = 90 - w
         z = radians(z)
         w = radians(w)
@@ -65,6 +72,8 @@ class Planes(object):
             self.direction = self.direction + change_d
             change_s = choice([-300, 300])
             self.speed = self.speed + change_s
+    def draw(x1, x2, y1, y2, color):
+        map_of_planes.create_line(x1, x2, y1, y2, fill='color')
 
 
 def making_planes(number_of_planes=20):
@@ -74,17 +83,28 @@ def making_planes(number_of_planes=20):
         company = choice(airlines)
         speed = randint(100,1001)
         direction = randint(0,361)
-        plane = Planes(x, y, company, speed, direction)
+        color = choice(colors)
+        plane = Planes(x, y, company, speed, direction, color)
         list_of_planes.append(plane)
 
 
 def playing(move):
     for i in range(move):
             for a_plane in list_of_planes:
+                x1 = a_plane.x
+                y1 = a_plane.y
                 a_plane.change_of_planes()
                 a_plane.find_angle()
+                x2 = a_plane.x
+                y2 = a_plane.y
+                color = a_plane.color
+                a_plane.draw(x1, x2, y1, y2, color)
                 if a_plane.x > 5000 or a_plane.x < 0 or a_plane.y < 0 or a_plane.y > 5000:
-                    list_of_planes.del(a_plane)
-                    a_plane.del()#УТОЧНИТЬ
+                    print(a_plane.x, a_plane.y)
+                    list_of_planes.remove(a_plane)
                 else:
                     pass
+
+
+making_planes()
+playing(10)
