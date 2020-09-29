@@ -72,8 +72,8 @@ class Planes(object):
             self.direction = self.direction + change_d
             change_s = choice([-300, 300])
             self.speed = self.speed + change_s
-    def draw(self, x1, x2, color):
-        map_of_planes.create_line(x1, self.x , y1, self.y, fill='color')
+    def draw(self, x1, x2,):
+        map_of_planes.create_line(x1, self.x , y1, self.y, fill='self.color')
 
 
 def making_planes(number_of_planes=20):
@@ -95,7 +95,7 @@ def playing(move):
                 y1 = a_plane.y
                 a_plane.change_of_planes()
                 a_plane.find_angle()
-                a_plane.draw(x1, x2, a_plane.color)
+                a_plane.draw(x1, x2,)
                 if a_plane.x > 5000 or a_plane.x < 0 or a_plane.y < 0 or a_plane.y > 5000:
                     print(a_plane.x, a_plane.y)
                     list_of_planes.remove(a_plane)
