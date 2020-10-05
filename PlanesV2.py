@@ -10,7 +10,6 @@ map_of_planes = Canvas(tk, width=500, height=500)
 map_of_planes.pack()
 
 
-
 airlines = ['S7', 'Air Baltic', 'Aeroflot', 'Delta airlines']
 list_of_planes = list()
 colors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple', 'magenta', 'pink', 'lime']
@@ -73,6 +72,11 @@ class Planes(object):
             change_s = choice([-300, 300])
             self.speed = self.speed + change_s
     def draw(self, x1, x2,):
+        k = 10 #масштаб "карты"
+        x1 = round(x1/k)
+        x2 = round(self.x/k)
+        y1 = round(y1/k)
+        y2 = round(self.y/k)
         map_of_planes.create_line(x1, self.x , y1, self.y, fill='self.color')
 
 
